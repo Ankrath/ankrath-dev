@@ -5,10 +5,10 @@ const App = () => {
   const [visible, setVisible] = useState(false);
   const [currentLine, setCurrentLine] = useState(0);
   const [cursorPosition, setCursorPosition] = useState(0);
-  const [secondsAlive, setSecondsAlive] = useState(0);
+  const [yearsExperience, setYearsExperience] = useState(0);
   const [showContent, setShowContent] = useState(false);
 
-  const birthTimestamp = new Date('1996-02-13').getTime();
+  const careerStart = new Date('2014-10-01').getTime();
 
   const lines = [
     '{INITIALIZED}',
@@ -43,18 +43,18 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    const secondsTimer = setInterval(() => {
+    const experienceTimer = setInterval(() => {
       const now = new Date().getTime();
-      const secondsDiff = Math.floor((now - birthTimestamp) / 1000);
-      setSecondsAlive(secondsDiff);
-    }, 1000);
+      const yearsDiff = (now - careerStart) / (1000 * 60 * 60 * 24 * 365.25);
+      setYearsExperience(yearsDiff);
+    }, 50);
 
     const now = new Date().getTime();
-    const secondsDiff = Math.floor((now - birthTimestamp) / 1000);
-    setSecondsAlive(secondsDiff);
+    const yearsDiff = (now - careerStart) / (1000 * 60 * 60 * 24 * 365.25);
+    setYearsExperience(yearsDiff);
 
-    return () => clearInterval(secondsTimer);
-  }, [birthTimestamp]);
+    return () => clearInterval(experienceTimer);
+  }, [careerStart]);
 
   return (
     <div className='h-screen w-screen bg-black text-green-500 pt-10 p-8 font-mono overflow-hidden text-base md:text-lg'>
@@ -127,29 +127,28 @@ const App = () => {
 
               <div className='mt-8 grid grid-cols-2 gap-4'>
                 <div className='border border-green-500/30 p-4'>
-                  <div className='text-xs text-gray-500'>uptime</div>
-                  <div className='mt-1'>
-                    {secondsAlive.toLocaleString()} seconds
+                  <div className='text-sm text-gray-500'>
+                    years of experience
                   </div>
+                  <div className='mt-1'>{yearsExperience.toFixed(12)}</div>
                 </div>
                 <div className='border border-green-500/30 p-4'>
-                  <div className='text-xs text-gray-500'>127.0.0.1</div>
+                  <div className='text-sm text-gray-500'>location</div>
                   <div className='mt-1'>UK</div>
                 </div>
               </div>
 
-              <a
-                href='mailto:contact@ankrath.dev'
-                className='flex items-center space-x-2 hover:text-green-400 transition-colors pt-6'
-              >
+              <div className='flex items-center space-x-2 hover:text-green-400 transition-colors pt-6'>
                 <span className='text-gray-500'>$</span>
-                <span>contact_me</span>
+                <a href='mailto:contact@ankrath.dev'>
+                  <span>contact_me</span>
+                </a>
                 <span
                   className={`w-2 h-4 bg-green-500 ${
                     cursorPosition ? 'opacity-0' : 'opacity-100'
                   }`}
                 />
-              </a>
+              </div>
             </div>
           )}
         </div>
