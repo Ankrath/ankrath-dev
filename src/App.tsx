@@ -130,7 +130,7 @@ const App = () => {
                   <div className='text-sm text-gray-500'>
                     years of experience
                   </div>
-                  <div className='mt-1'>{yearsExperience.toFixed(12)}</div>
+                  <div className='mt-1'>{yearsExperience.toFixed(10)}</div>
                 </div>
                 <div className='border border-green-500/30 p-4'>
                   <div className='text-sm text-gray-500'>location</div>
