@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Github, Twitter } from 'lucide-react';
+import { FiGithub, FiTwitter } from 'react-icons/fi';
+
+import SkillModal from './SkillModal';
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -7,25 +9,53 @@ const App = () => {
   const [cursorPosition, setCursorPosition] = useState(0);
   const [yearsExperience, setYearsExperience] = useState(0);
   const [showContent, setShowContent] = useState(false);
+  const [typedText, setTypedText] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
-  const careerStart = new Date('2014-10-01').getTime();
+  const contactText = 'Business inquiry? Contact me!';
+  const careerStart = new Date('2013-07-01').getTime();
 
   const lines = [
     '{INITIALIZED}',
     'sys.start();',
     'loading profile...',
     'user: Ankrath',
-    'status: building cool things that are occasionally useful',
-    'current_project: fearless-draft-helper',
+    'status: building cool things',
+    <>
+      current_project:{' '}
+      <a
+        href='https://github.com/ankrath/fearless-draft-helper'
+        target='_blank'
+        rel='noopener noreferrer'
+        className='hover:text-green-400 transition-colors underline'
+      >
+        fearless-draft-helper
+      </a>
+    </>,
     'loading skills...',
     'establishing connections...',
   ];
 
   useEffect(() => {
+    if (!showContent) return;
+    setTypedText('');
+
+    let currentIndex = 0;
+    const typingTimer = setInterval(() => {
+      if (currentIndex < contactText.length) {
+        setTypedText(contactText.slice(0, currentIndex + 1));
+        currentIndex++;
+      }
+    }, 80);
+
+    return () => clearInterval(typingTimer);
+  }, [showContent]);
+
+  useEffect(() => {
     setVisible(true);
     const timer = setInterval(() => {
       setCurrentLine(prev => (prev < lines.length ? prev + 1 : prev));
-    }, 400);
+    }, 500);
 
     if (currentLine === lines.length) {
       setTimeout(() => setShowContent(true), 500);
@@ -90,7 +120,8 @@ const App = () => {
           </div>
 
           {currentLine >= lines.length && showContent && (
-            <div className='mt-12 space-y-6'>
+            <div className='mt-12'>
+              <div className='text-sm text-gray-500'>skills</div>
               <div className='flex flex-wrap gap-4'>
                 <span className='text-blue-400'>React</span>
                 <span className='text-red-400'>TypeScript</span>
@@ -99,19 +130,25 @@ const App = () => {
                 <span className='text-orange-400 line-through'>
                   League of Legends
                 </span>
-                <span className='text-gray-400 opacity-70'>
-                  ...and many others
+                <span className='text-gray-300'>
+                  ...and{' '}
+                  <span
+                    className='underline cursor-pointer hover:text-white'
+                    onClick={() => setShowModal(true)}
+                  >
+                    many others
+                  </span>
                 </span>
               </div>
 
-              <div className='space-y-2 py-6'>
+              <div className='space-y-2 pt-10 pb-3'>
                 <a
                   href='https://github.com/ankrath'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='flex items-center space-x-2 text-white hover:text-green-400 transition-colors'
                 >
-                  <Github size={16} />
+                  <FiGithub size={18} />
                   <span>github.connection_established</span>
                 </a>
                 <a
@@ -120,12 +157,12 @@ const App = () => {
                   rel='noopener noreferrer'
                   className='flex items-center space-x-2 text-white hover:text-green-400 transition-colors'
                 >
-                  <Twitter size={16} />
+                  <FiTwitter size={18} />
                   <span>twitter.connection_established</span>
                 </a>
               </div>
 
-              <div className='mt-8 grid grid-cols-2 gap-4'>
+              <div className='mt-8 mb-6 grid grid-cols-2 gap-4'>
                 <div className='border border-green-500/30 p-4'>
                   <div className='text-sm text-gray-500'>
                     years of experience
@@ -141,18 +178,19 @@ const App = () => {
               <div className='flex items-center space-x-2 hover:text-green-400 transition-colors pt-6'>
                 <span className='text-gray-500'>$</span>
                 <a href='mailto:contact@ankrath.dev'>
-                  <span>contact_me</span>
+                  {typedText}
+                  <span
+                    className={`inline-block w-2 h-4 bg-green-500 ml-1 ${
+                      cursorPosition ? 'opacity-0' : 'opacity-100'
+                    }`}
+                  />
                 </a>
-                <span
-                  className={`w-2 h-4 bg-green-500 ${
-                    cursorPosition ? 'opacity-0' : 'opacity-100'
-                  }`}
-                />
               </div>
             </div>
           )}
         </div>
       </div>
+      <SkillModal isOpen={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
 };
