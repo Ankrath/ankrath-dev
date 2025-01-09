@@ -175,12 +175,12 @@ const App = () => {
                 </div>
               </div>
 
-              <div className='flex items-center space-x-2 hover:text-green-400 transition-colors pt-6'>
+              <div className='text-xl flex items-center space-x-2 hover:text-green-400 transition-colors pt-6'>
                 <span className='text-gray-500'>$</span>
                 <a href='mailto:contact@ankrath.dev'>
                   {typedText}
                   <span
-                    className={`inline-block w-2 h-4 bg-green-500 ml-1 ${
+                    className={`inline-block w-2 h-4 bg-green-500 ${
                       cursorPosition ? 'opacity-0' : 'opacity-100'
                     }`}
                   />
