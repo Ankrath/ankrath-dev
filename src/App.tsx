@@ -87,7 +87,7 @@ const App = () => {
   }, [careerStart]);
 
   return (
-    <div className='h-screen w-screen bg-black text-green-500 pt-10 p-8 font-mono overflow-hidden text-base md:text-lg'>
+    <div className='min-h-screen w-full bg-black text-green-500 p-8 font-mono text-base md:text-lg overflow-x-hidden overflow-y-auto scrollbar-hide'>
       <div className='fixed top-0 left-0 w-full h-full opacity-10 pointer-events-none'>
         {[...Array(20)].map((_, i) => (
           <div
