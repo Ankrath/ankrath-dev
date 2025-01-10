@@ -22,14 +22,14 @@ const App = () => {
     'user: Ankrath',
     'status: building cool things',
     <>
-      current_project:{' '}
+      latest_project:{' '}
       <a
-        href='https://github.com/ankrath/fearless-draft-helper'
+        href='https://fdraft.app'
         target='_blank'
         rel='noopener noreferrer'
         className='hover:text-green-400 transition-colors underline'
       >
-        fearless-draft-helper
+        fdraft.app
       </a>
     </>,
     'loading skills...',

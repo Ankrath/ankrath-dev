@@ -35,16 +35,18 @@ const SkillModal = ({ isOpen, onClose }: SkillModalProps) => {
         <div className='space-y-6'>
           <div className='pt-2'>
             <div className='text-sm text-gray-500 mb-1'>full stack</div>
-            <div className='flex flex-wrap gap-x-3 gap-y-1'>
+            <div className='flex flex-wrap gap-x-4 gap-y-1'>
               <span className='text-blue-400'>React</span>
               <span className='text-violet-400'>Next.js</span>
               <span className='text-amber-400'>Redux</span>
               <span className='text-yellow-300'>JavaScript</span>
               <span className='text-red-400'>TypeScript</span>
+              <span className='text-violet-600'>React Native</span>
               <span className='text-cyan-400'>Zustand</span>
               <span className='text-pink-400'>Tailwind</span>
               <span className='text-emerald-400'>Node</span>
-              <span className='text-blue-500'>Express</span>
+              <span className='text-red-600'>Express</span>
+              <span className='text-blue-500'>Go</span>
               <span className='text-fuchsia-400'>GraphQL</span>
               <span className='text-indigo-400'>Prisma</span>
               <span className='text-rose-400'>Redis</span>
@@ -53,7 +55,7 @@ const SkillModal = ({ isOpen, onClose }: SkillModalProps) => {
 
           <div className='pt-2'>
             <div className='text-sm text-gray-500 mb-1'>testing</div>
-            <div className='flex flex-wrap gap-3'>
+            <div className='flex flex-wrap gap-4'>
               <span className='text-red-500'>Jest</span>
               <span className='text-violet-500'>RTL</span>
               <span className='text-sky-400'>Playwright</span>
@@ -63,7 +65,7 @@ const SkillModal = ({ isOpen, onClose }: SkillModalProps) => {
 
           <div className='pt-2'>
             <div className='text-sm text-gray-500 mb-1'>db</div>
-            <div className='flex flex-wrap gap-3'>
+            <div className='flex flex-wrap gap-4'>
               <span className='text-green-500'>MongoDB</span>
               <span className='text-cyan-300'>PostgreSQL</span>
               <span className='text-amber-300'>MySQL</span>
@@ -71,11 +73,12 @@ const SkillModal = ({ isOpen, onClose }: SkillModalProps) => {
           </div>
 
           <div className='pt-2'>
-            <div className='text-sm text-gray-500 mb-1'>others</div>
-            <div className='flex flex-wrap gap-3'>
-              <span className='text-orange-300'>AWS</span>
+            <div className='text-sm text-gray-500 mb-1'>misc</div>
+            <div className='flex flex-wrap gap-4'>
+              <span className='text-orange-300'>AWS (EC2, S3, Lambda)</span>
               <span className='text-sky-300'>Docker</span>
               <span className='text-rose-300'>Terraform</span>
+              <span className='text-indigo-300'>Kubernetes</span>
               <span className='text-fuchsia-300'>Storybook</span>
             </div>
           </div>
