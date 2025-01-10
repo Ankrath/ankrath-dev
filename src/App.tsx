@@ -20,7 +20,7 @@ const App = () => {
     'sys.start();',
     'loading profile...',
     'user: Ankrath',
-    'status: building cool things',
+    // 'status: building cool things',
     <>
       latest_project:{' '}
       <a
