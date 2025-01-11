@@ -55,10 +55,10 @@ const App = () => {
     setVisible(true);
     const timer = setInterval(() => {
       setCurrentLine(prev => (prev < lines.length ? prev + 1 : prev));
-    }, 400);
+    }, 350);
 
     if (currentLine === lines.length) {
-      setTimeout(() => setShowContent(true), 500);
+      setTimeout(() => setShowContent(true), 350);
     }
 
     return () => clearInterval(timer);
