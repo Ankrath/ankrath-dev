@@ -13,7 +13,7 @@ const App = () => {
   const [showModal, setShowModal] = useState(false);
 
   const contactText = 'Business inquiry? Contact me!';
-  const careerStart = new Date('2013-07-01').getTime();
+  const careerStart = new Date('2014-07-01').getTime();
 
   const lines = [
     '{INITIALIZED}',
