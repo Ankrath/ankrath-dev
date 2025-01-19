@@ -24,12 +24,12 @@ const App = () => {
     <>
       latest_project:{' '}
       <a
-        href='https://fdraft.app'
+        href='https://goaltrack.lol'
         target='_blank'
         rel='noopener noreferrer'
         className='hover:text-green-400 transition-colors underline'
       >
-        fdraft.app
+        goaltrack.lol
       </a>
     </>,
     'loading skills...',
